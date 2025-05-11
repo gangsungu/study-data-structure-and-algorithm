@@ -24,14 +24,14 @@ public class MyLinkedQueue<T> implements IQueue<T> {
         if (isEmpty()) {
             throw new IllegalStateException();
         }
-        Node ret = this.head.next;
-        this.head.next = ret.next;
-        ret.next = null;
+        Node node = this.head.next;
+        this.head.next = node.next;
+        node.next = null;
         this.size--;
         if (this.head.next == null) {
             this.tail = this.head;
         }
-        return ret.data;
+        return node.data;
     }
 
     @Override
