@@ -5,14 +5,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MyLinkedHashTable<K, V> implements IHashTable<K, V> {
+    private static final int DEFAULT_BUCKET_SIZE = 1024;
+
     private List<Node>[] buckets;   // hashTable -> chaining
     private int size;
     private int bucketSize;
 
     public MyLinkedHashTable() {
-        this.buckets = new List[1024];  // 2의 10제곱
-        this.bucketSize = 1024;
+        this.buckets = new List[DEFAULT_BUCKET_SIZE];  // 2의 10제곱
+        this.bucketSize = DEFAULT_BUCKET_SIZE;
         this.size = 0;
+
         for(int i = 0; i < bucketSize; i++) {
             this.buckets[i] = new LinkedList<>();
         }
@@ -22,6 +25,7 @@ public class MyLinkedHashTable<K, V> implements IHashTable<K, V> {
         this.buckets = new List[bucketSize];
         this.bucketSize = bucketSize;
         this.size = 0;
+
         for(int i = 0; i < bucketSize; i++) {
             this.buckets[i] = new LinkedList<>();
         }
